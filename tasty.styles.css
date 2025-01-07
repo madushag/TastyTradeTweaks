@@ -1,0 +1,42 @@
+/* Main theme colors */
+:root {
+    --tasty-dark-bg: #1c1c1c;
+    --tasty-red: #ff4444;
+    --tasty-text-light: #ffffff;
+    --tasty-border: #333333;
+}
+
+/* Insufficient balance popup styling */
+.tasty-balance-popup {
+    position: absolute;
+    padding: 8px 12px;
+    background-color: var(--tasty-red);
+    color: var(--tasty-text-light);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500; 
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: -30px;
+    white-space: nowrap;
+}
+
+/* Highlighted requirement value styling */
+.tasty-requirement-warning {
+    background-color: var(--tasty-red) !important;
+    color: var(--tasty-text-light) !important;
+    padding: 2px 4px;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+/* Table row hover effects */
+.capital-requirements-table-row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Checkbox styling */
+.tasty-checkbox[data-state="checked"] {
+    background-color: var(--tasty-red);
+    border-color: var(--tasty-red);
+} 
