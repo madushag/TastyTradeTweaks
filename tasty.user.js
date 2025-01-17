@@ -6,7 +6,7 @@
 // @author       Madusha G.
 // @match        https://my.tastytrade.com/app.html*/trading/positions/capital-requirements
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tastytrade.com
-// @resource     TASTYCSS file://C:/DevStuff/TastyTradeTweaks/tasty.styles.css
+// @resource     TASTYCSS https://raw.githubusercontent.com/madushag/TastyTradeTweaks/refs/heads/main/tasty.styles.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // ==/UserScript==
