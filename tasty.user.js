@@ -17,6 +17,8 @@ let intialRequirementValue = 0;
 let cashBalanceValue = 0;   
 let currentUrl = window.location.href;
 let accountSelected = false;
+let capitalRequirementsButtonPositionAdjusted = false;
+
 
 // Create a MutationObserver to watch for changes in the URL
 const observer = new MutationObserver(() => {
@@ -24,6 +26,8 @@ const observer = new MutationObserver(() => {
     // if the current url is the capital requirements page, then run handleCapitalRequirementsPage() method
     if (window.location.href !== currentUrl) {  
         currentUrl = window.location.href;
+
+        // if the current url is the capital requirements page, then run handleCapitalRequirementsPage() method 
         if (window.location.href.includes('positions/capital-requirements')) {
             handleCapitalRequirementsPage();
         }
@@ -35,16 +39,52 @@ const observer = new MutationObserver(() => {
         // Inject CSS if it is not already injected
         injectStylesIfNeeded();
 
-       
-
         // click the accounts button
         clickAccountsButton();
 
+        if (!window.location.href.endsWith('trading/positions')) {
+            capitalRequirementsButtonPositionAdjusted = false;
+        }
+        else {
+            adjustCapitalRequirementsButtonPosition();
+        }
+        
     }, 5000);
 });
 
 // Start observing the document for changes in the child nodes
 observer.observe(document, { childList: true, subtree: true });
+
+function adjustCapitalRequirementsButtonPosition() {
+    
+    if (capitalRequirementsButtonPositionAdjusted) {
+        return;
+    }   
+
+    // Find the control bar item containing the Cap Req button
+    const capReqContainer = document.querySelector('div.control-bar-item.flex.flex-col.capital-requirements');
+    // Find the export button container
+    const exportContainer = document.querySelector('div.control-bar-item.flex.flex-col.export');
+    
+    if (capReqContainer && exportContainer) {
+        // Get the parent control-bar element
+        const controlBar = capReqContainer.parentElement;
+        
+        // Remove the Cap Req container from its current position
+        controlBar.removeChild(capReqContainer);
+        
+        // Insert the Cap Req container before the export container
+        controlBar.insertBefore(capReqContainer, exportContainer);
+
+        // Mark as adjusted so we don't keep trying to move it
+        capitalRequirementsButtonPositionAdjusted = true;
+    } else {
+        // If either element isn't found yet, retry after a short delay
+        setTimeout(() => {
+            adjustCapitalRequirementsButtonPosition();
+        }, 1000);
+    }
+}
 
 
 // Function to handle the capital requirements page
