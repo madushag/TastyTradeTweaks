@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  Tasty Tweaks
 // @author       Madusha G.
-// @match        https://my.tastytrade.com/app.html*/trading/positions/capital-requirements
+// @match        https://my.tastytrade.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tastytrade.com
 // @resource     TASTYCSS https://raw.githubusercontent.com/madushag/TastyTradeTweaks/refs/heads/main/tasty.styles.css
 // @grant        GM_addStyle
